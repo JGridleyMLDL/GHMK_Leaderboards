@@ -2159,9 +2159,32 @@ responsive
 }
 
 /* Forgotten Styles */
+.mushroom-cup {
+  padding-top: 2rem;
+}
 
-.title {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 16px;
+.col img {
+  height: 3.75rem;
+  width: auto;
+}
+
+#cup-title h3 {
+  font-size: 40px;
+}
+
+.middle-tables {
+  padding-top: 2rem;
+}
+
+.leader-links {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.leader-link {
   color: #e0102f;
+}
+
+.leader-link:hover {
+  color: #95a4ae;
 }
