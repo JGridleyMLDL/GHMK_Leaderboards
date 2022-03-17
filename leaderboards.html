@@ -24,9 +24,61 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/animated.css">
   <link rel="stylesheet" href="assets/css/owl.css">
-  <!--
+  <!---->
+  <style>
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
 
--->
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {outline: 3px solid #ddd;}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+
 </head>
 
 <body>
@@ -123,6 +175,99 @@
 </div>
 
 
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Select Map</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+    <a href="#mks">Mario Circuit</a>
+    <a href="#wp">Toad Harbour</a>
+    <a href="#ssc">Twisted Mansion</a>
+    <a href="#tr">Shy Guy Falls</a>
+    <a href="#mc">Sunshine Airport</a>
+    <a href="#th">Dolphin Shoals</a>
+    <a href="#tm">Electrodome</a>
+    <a href="#sgf">Mount Wario</a>
+    <a href="#sa">Cloudtop Cruise</a>
+    <a href="#ds">Bone-Dry Dunes</a>
+    <a href="#e">Bowser's Castle</a>
+    <a href="#mw">Rainbow Road</a>
+    <a href="#cc">Moo Moo Meadows</a>
+    <a href="#bdd">Mario Circuit (GBA)</a>
+    <a href="#bc">Cheep Cheep Beach</a>
+    <a href="#rr">Toad's Turnpike</a>
+    <a href="#mmm">Dry Dry Desert</a>
+    <a href="#mcGBA">Donut Plains 3</a>
+    <a href="#ccb">Royal Raceway</a>
+    <a href="#tt">DK Jungle</a>
+    <a href="#ddd">Wario Stadium</a>
+    <a href="#dp">Sherbert Land</a>
+    <a href="#rr">Music Park</a>
+    <a href="#dkj">Yoshi Valley</a>
+    <a href="#ws">Tick-Tock Clock</a>
+    <a href="#sl">Piranha Plant Slide</a>
+    <a href="#mp">Grumble Volcano</a>
+    <a href="#yv">Rainbow Road (N64)</a>
+    <a href="#ttc">Yoshi Circuit</a>
+    <a href="#pps">ExciteBike Arena</a>
+    <a href="#gv">Dragon Driftway</a>
+    <a href="#rrN64">Mute City</a>
+    <a href="#yc">Wario's Gold Mine</a>
+    <a href="#eba">Rainbow Road (SNES)</a>
+    <a href="#dd">Ice Ice Outpost</a>
+    <a href="#mutecity">Hyrule Circuit</a>
+    <a href="#wgm">Baby Park</a>
+    <a href="#rrSNES">Cheese Land</a>
+    <a href="#iio">Wild Woods</a>
+    <a href="#hc">Animal Crossing</a>
+    <a href="#bp">Neo Bowser City</a>
+    <a href="#cl">Ribbon Road</a>
+    <a href="#ww">Super Bell Subway</a>
+    <a href="#ac">Big Blue</a>
+  </div>
+</div>
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn') && !event.target.matches('#myInput')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
+
+</script>
+
+
   <!-- Begin Table Area with Mushroom Cup-->
   <div class="container top-container title-container">
       <div class="row row-title">
@@ -138,7 +283,7 @@
   <div class="container mushroom-cup">
     <div class="row">
       <div class="col-sm">
-        <table class="table table-dark table-sm">
+        <table id="mks" class="table table-dark table-sm">
           <thead >
             <tr>
               <th scope="col" colspan="3">Mario Kart Stadium</th>
@@ -180,7 +325,7 @@
         <table class="table table-sm">
           <thead class="thead-dark">
             <tr>
-              <th scope="col" colspan="3">Water Park</th>
+              <th id="wp" scope="col" colspan="3">Water Park</th>
             </tr>
           </thead>
           <tbody>
@@ -219,7 +364,7 @@
         <table class="table table-dark table-sm">
           <thead >
             <tr>
-              <th scope="col" colspan="3">Sweet Sweet Canyon</th>
+              <th id="ssc" scope="col" colspan="3">Sweet Sweet Canyon</th>
             </tr>
           </thead>
           <tbody>
@@ -258,7 +403,7 @@
         <table class="table table-sm">
           <thead class="thead-dark ">
             <tr>
-              <th scope="col" colspan="3">Thwomp Ruins</th>
+              <th id="tr" scope="col" colspan="3">Thwomp Ruins</th>
             </tr>
           </thead>
           <tbody>
@@ -316,7 +461,7 @@
           <table class="table table-dark table-sm">
             <thead>
               <tr>
-                <th scope="col" colspan="3">Mario Circuit</th>
+                <th id="mc" scope="col" colspan="3">Mario Circuit</th>
               </tr>
             </thead>
             <tbody>
@@ -355,7 +500,7 @@
           <table class="table table-sm">
             <thead class="thead-dark">
               <tr>
-                <th scope="col" colspan="3">Toad Harbour</th>
+                <th id="th" scope="col" colspan="3">Toad Harbour</th>
               </tr>
             </thead>
             <tbody>
@@ -394,7 +539,7 @@
           <table class="table table-dark table-sm">
             <thead>
               <tr>
-                <th scope="col" colspan="3">Twisted Mansion</th>
+                <th id="tm" scope="col" colspan="3">Twisted Mansion</th>
               </tr>
             </thead>
             <tbody>
@@ -433,7 +578,7 @@
           <table class="table">
             <thead class="thead-dark">
               <tr>
-                <th scope="col" colspan="3">Shy Guy Falls</th>
+                <th id="sgf" scope="col" colspan="3">Shy Guy Falls</th>
               </tr>
             </thead>
             <tbody>
@@ -489,7 +634,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Sunshine Airport</th>
+            <th id="sa" scope="col" colspan="3">Sunshine Airport</th>
           </tr>
         </thead>
         <tbody>
@@ -528,7 +673,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Dolphin Shoals</th>
+            <th id="ds" scope="col" colspan="3">Dolphin Shoals</th>
           </tr>
         </thead>
         <tbody>
@@ -567,7 +712,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Electrodome</th>
+            <th id="e" scope="col" colspan="3">Electrodome</th>
           </tr>
         </thead>
         <tbody>
@@ -606,7 +751,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Mount Wario</th>
+            <th id="mw" scope="col" colspan="3">Mount Wario</th>
           </tr>
         </thead>
         <tbody>
@@ -663,7 +808,7 @@
         <table class="table table-dark table-sm">
           <thead>
             <tr>
-              <th scope="col" colspan="3">Cloudtop Cruise</th>
+              <th id="cc" scope="col" colspan="3">Cloudtop Cruise</th>
             </tr>
           </thead>
           <tbody>
@@ -702,7 +847,7 @@
         <table class="table table-sm">
           <thead class="thead-dark">
             <tr>
-              <th scope="col" colspan="3">Bone-Dry Dunes</th>
+              <th id="bdd" scope="col" colspan="3">Bone-Dry Dunes</th>
             </tr>
           </thead>
           <tbody>
@@ -741,7 +886,7 @@
         <table class="table table-dark table-sm">
           <thead>
             <tr>
-              <th scope="col" colspan="3">Bowser's Castle</th>
+              <th id="bc" scope="col" colspan="3">Bowser's Castle</th>
             </tr>
           </thead>
           <tbody>
@@ -780,7 +925,7 @@
         <table class="table table-sm">
           <thead class="thead-dark">
             <tr>
-              <th scope="col" colspan="3">Rainbow Road</th>
+              <th id="rr" scope="col" colspan="3">Rainbow Road</th>
             </tr>
           </thead>
           <tbody>
@@ -837,7 +982,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Moo Moo Meadows (Wii)</th>
+            <th id="mmm" scope="col" colspan="3">Moo Moo Meadows (Wii)</th>
           </tr>
         </thead>
         <tbody>
@@ -876,7 +1021,7 @@
       <table class="table table-sm">
         <thead class="thead-dark ">
           <tr>
-            <th scope="col" colspan="3">Mario Circuit (GBA)</th>
+            <th id="mcGBA" scope="col" colspan="3">Mario Circuit (GBA)</th>
           </tr>
         </thead>
         <tbody>
@@ -915,7 +1060,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Cheep Cheep Beach (DS)</th>
+            <th id="ccb" scope="col" colspan="3">Cheep Cheep Beach (DS)</th>
           </tr>
         </thead>
         <tbody>
@@ -954,7 +1099,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Taod's Turnpike (N64)</th>
+            <th id="tt" scope="col" colspan="3">Toad's Turnpike (N64)</th>
           </tr>
         </thead>
         <tbody>
@@ -1009,7 +1154,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Dry Dry Desert</th>
+            <th id="ddd" scope="col" colspan="3">Dry Dry Desert</th>
           </tr>
         </thead>
         <tbody>
@@ -1048,7 +1193,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Donut Plains 3 (SNES)</th>
+            <th id="dp" scope="col" colspan="3">Donut Plains 3 (SNES)</th>
           </tr>
         </thead>
         <tbody>
@@ -1087,7 +1232,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Royal Raceway (N64)</th>
+            <th id="rr" scope="col" colspan="3">Royal Raceway (N64)</th>
           </tr>
         </thead>
         <tbody>
@@ -1126,7 +1271,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">DK Jungle(3DS)</th>
+            <th id="dkj" scope="col" colspan="3">DK Jungle(3DS)</th>
           </tr>
         </thead>
         <tbody>
@@ -1182,7 +1327,7 @@
         <table class="table table-dark table-sm">
           <thead>
             <tr>
-              <th scope="col" colspan="3">Wario Stadium (DS)</th>
+              <th id="ws" scope="col" colspan="3">Wario Stadium (DS)</th>
             </tr>
           </thead>
           <tbody>
@@ -1221,7 +1366,7 @@
         <table class="table table-sm">
           <thead class="thead-dark">
             <tr>
-              <th scope="col" colspan="3">Sherbet Land (GameCube)</th>
+              <th id="sl" scope="col" colspan="3">Sherbet Land (GameCube)</th>
             </tr>
           </thead>
           <tbody>
@@ -1260,7 +1405,7 @@
         <table class="table table-dark table-sm">
           <thead>
             <tr>
-              <th scope="col" colspan="3">Music Park (3DS)</th>
+              <th id="mp" scope="col" colspan="3">Music Park (3DS)</th>
             </tr>
           </thead>
           <tbody>
@@ -1299,7 +1444,7 @@
         <table class="table table-sm">
           <thead class="thead-dark">
             <tr>
-              <th scope="col" colspan="3">Yoshi Valley (N64)</th>
+              <th id="yp" scope="col" colspan="3">Yoshi Valley (N64)</th>
             </tr>
           </thead>
           <tbody>
@@ -1355,7 +1500,7 @@
           <table class="table table-dark table-sm">
             <thead>
               <tr>
-                <th scope="col" colspan="3">Tick-Tock Clock (DS)</th>
+                <th id="ttc" scope="col" colspan="3">Tick-Tock Clock (DS)</th>
               </tr>
             </thead>
             <tbody>
@@ -1394,7 +1539,7 @@
           <table class="table table-sm">
             <thead class="thead-dark">
               <tr>
-                <th scope="col" colspan="3">Piranha Plan Slide (3DS)</th>
+                <th id="pps" scope="col" colspan="3">Piranha Plant Slide (3DS)</th>
               </tr>
             </thead>
             <tbody>
@@ -1433,7 +1578,7 @@
           <table class="table table-dark table-sm">
             <thead>
               <tr>
-                <th scope="col" colspan="3">Grumble Volcano (Wii)</th>
+                <th id="gp" scope="col" colspan="3">Grumble Volcano (Wii)</th>
               </tr>
             </thead>
             <tbody>
@@ -1472,7 +1617,7 @@
           <table class="table table-sm">
             <thead class="thead-dark">
               <tr>
-                <th scope="col" colspan="3">Rainbow Road (N64)</th>
+                <th id="rrN64" scope="col" colspan="3">Rainbow Road (N64)</th>
               </tr>
             </thead>
             <tbody>
@@ -1529,7 +1674,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Yoshi Ciruit (GCN)</th>
+            <th id="yc" scope="col" colspan="3">Yoshi Ciruit (GCN)</th>
           </tr>
         </thead>
         <tbody>
@@ -1568,7 +1713,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">ExciteBike Arena</th>
+            <th id="eba" scope="col" colspan="3">ExciteBike Arena</th>
           </tr>
         </thead>
         <tbody>
@@ -1607,7 +1752,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Dragon Driftway</th>
+            <th id="dd" scope="col" colspan="3">Dragon Driftway</th>
           </tr>
         </thead>
         <tbody>
@@ -1646,7 +1791,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Mute City</th>
+            <th id="mutecity" scope="col" colspan="3">Mute City</th>
           </tr>
         </thead>
         <tbody>
@@ -1703,7 +1848,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Wario's Gold Mine (Wii)</th>
+            <th id="wgm" scope="col" colspan="3">Wario's Gold Mine (Wii)</th>
           </tr>
         </thead>
         <tbody>
@@ -1742,7 +1887,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Rainbow Road (SNES)</th>
+            <th id="rrSNES" scope="col" colspan="3">Rainbow Road (SNES)</th>
           </tr>
         </thead>
         <tbody>
@@ -1781,7 +1926,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Ice Ice Outpost</th>
+            <th id="iio" scope="col" colspan="3">Ice Ice Outpost</th>
           </tr>
         </thead>
         <tbody>
@@ -1820,7 +1965,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Hyrule Circuit</th>
+            <th id="hc" scope="col" colspan="3">Hyrule Circuit</th>
           </tr>
         </thead>
         <tbody>
@@ -1877,7 +2022,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Baby Park (GCN)</th>
+            <th id="bp" scope="col" colspan="3">Baby Park (GCN)</th>
           </tr>
         </thead>
         <tbody>
@@ -1916,7 +2061,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Cheese Land (GBA)</th>
+            <th id="cl" scope="col" colspan="3">Cheese Land (GBA)</th>
           </tr>
         </thead>
         <tbody>
@@ -1955,7 +2100,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Wild Woods</th>
+            <th id="ww" scope="col" colspan="3">Wild Woods</th>
           </tr>
         </thead>
         <tbody>
@@ -1994,7 +2139,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Animal Crossing</th>
+            <th id="ac" scope="col" colspan="3">Animal Crossing</th>
           </tr>
         </thead>
         <tbody>
@@ -2051,7 +2196,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Neo Bowser City (3DS)</th>
+            <th id="nbc" scope="col" colspan="3">Neo Bowser City (3DS)</th>
           </tr>
         </thead>
         <tbody>
@@ -2090,7 +2235,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Ribbon Road (GBA)</th>
+            <th id="ribbonroad" scope="col" colspan="3">Ribbon Road (GBA)</th>
           </tr>
         </thead>
         <tbody>
@@ -2129,7 +2274,7 @@
       <table class="table table-dark table-sm">
         <thead>
           <tr>
-            <th scope="col" colspan="3">Super Bell Subway</th>
+            <th id="sbs" scope="col" colspan="3">Super Bell Subway</th>
           </tr>
         </thead>
         <tbody>
@@ -2168,7 +2313,7 @@
       <table class="table table-sm">
         <thead class="thead-dark">
           <tr>
-            <th scope="col" colspan="3">Big Blue</th>
+            <th id="bb" scope="col" colspan="3">Big Blue</th>
           </tr>
         </thead>
         <tbody>
